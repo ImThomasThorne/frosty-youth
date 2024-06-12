@@ -110,3 +110,30 @@ function frost_register_block_pattern_categories() {
 }
 
 add_action( 'init', 'frost_register_block_pattern_categories' );
+
+/**
+ * Current Year Shortcode
+ */
+
+ function current_year() {
+	return date('Y');
+}
+
+add_shortcode('current-year', 'current_year');
+
+
+/**
+ * Github Updater
+ */
+
+ require 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/ImThomasThorne/frosty-thorne',
+	__FILE__,
+	'frosty-thorne'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('trunk');
