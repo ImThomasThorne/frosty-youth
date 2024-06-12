@@ -1,13 +1,13 @@
 /*
-Theme Name: Frosty Thorne
-Theme URI: https://thomasthorne.me
+Theme Name: Frosty Youth
+Theme URI: https://tcya.org.uk
 Author: WP Engine - Modified by Thomas Thorne
 Author URI:
 Requires at least: 6.5
 Tested up to: 6.5.2
 Requires PHP: 7.0
-Version: 1.0.1
-Text Domain: frosty-thorne
+Version: 1.0.2
+Text Domain: frosty-youth
 */
 
 /* Defaults
@@ -194,6 +194,31 @@ textarea {
 .is-style-shadow-solid {
   box-shadow: var(--wp--preset--shadow--solid);
 }
+
+/*  Block: Separator
+---------------------------------------- */
+
+/* :root hr[class*="is-style-frostythorne-angled-separator"] {
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    -45deg,
+    currentColor 25%,
+    transparent 25%,
+    transparent 50%,
+    currentColor 50%,
+    currentColor 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 5px 5px;
+  border: none;
+  height: 10px !important;
+  max-width: 100%;
+}
+
+:root hr.is-style-frostythorne-angled-separator-wide {
+  width: 100% !important;
+} */
 
 /* Media Queries
 ---------------------------------------- */

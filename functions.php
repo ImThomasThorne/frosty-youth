@@ -1,12 +1,5 @@
 <?php
-/**
- * This file adds functions to the Frost WordPress theme.
- *
- * @package Frost
- * @author  WP Engine
- * @license GNU General Public License v3
- * @link    https://frostwp.com/
- */
+
 
 if ( ! function_exists( 'frost_setup' ) ) {
 
@@ -130,9 +123,9 @@ add_shortcode('current-year', 'current_year');
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://github.com/ImThomasThorne/frosty-thorne',
+	'https://github.com/ImThomasThorne/frosty-youth',
 	__FILE__,
-	'frosty-thorne'
+	'frosty-youth'
 );
 
 //Set the branch that contains the stable release.
