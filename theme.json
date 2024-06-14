@@ -79,17 +79,17 @@
 					"slug": "contrast"
 				},
 				{
-					"color": "#DD4146",
+					"color": "#009640",
 					"name": "Primary",
 					"slug": "primary"
 				},
 				{
-					"color": "#ED5D72",
+					"color": "#E6007E",
 					"name": "Secondary",
 					"slug": "secondary"
 				},
 				{
-					"color": "#E01772",
+					"color": "#F9B233",
 					"name": "Tertiary",
 					"slug": "tertiary"
 				}
