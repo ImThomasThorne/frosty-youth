@@ -99,6 +99,13 @@ function frost_register_block_pattern_categories() {
 			'description' => __( 'Compare features for your digital products or service plans.', 'frost' ),
 		)
 	);
+	register_block_pattern_category(
+		'cya-blocks',
+		array(
+			'label'       => __( 'CYA Blocks', 'CYA' ),
+			'description' => __( 'Blocks used by CYA', 'CYA' ),
+		)
+	);
 
 }
 

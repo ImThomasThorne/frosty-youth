@@ -79,6 +79,11 @@
 					"slug": "contrast"
 				},
 				{
+					"color": "#d4d4d4",
+					"name": "Grey",
+					"slug": "grey"
+				},
+				{
 					"color": "#009640",
 					"name": "Primary",
 					"slug": "primary"
