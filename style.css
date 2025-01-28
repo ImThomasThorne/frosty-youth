@@ -3,10 +3,10 @@ Theme Name: Frosty Youth
 Theme URI: https://cya.org.uk
 Author: WP Engine - Modified by Thomas Thorne
 Author URI:
-Requires at least: 6.5
-Tested up to: 6.5.2
+Requires at least: 6.7
+Tested up to: 6.7.1
 Requires PHP: 7.0
-Version: 1.0.6
+Version: 1.4
 Text Domain: frosty-youth
 */
 
@@ -17,6 +17,7 @@ Text Domain: frosty-youth
 *::before,
 *::after {
   box-sizing: border-box;
+  transition: all 100ms ease-in;
 }
 
 html {
@@ -30,7 +31,7 @@ input[type="button"],
 input[type="submit"],
 textarea:focus,
 .wp-element-button {
-  transition: all 0.2s ease-in-out;
+  transition: all 100ms ease-in;
 }
 
 a,
@@ -114,18 +115,20 @@ textarea {
 
 /* -- Buttons -- */
 
-.wp-block-button {
-  transition: all 0.1s ease-in-out;
+.wp-block-button,
+.wp-block-file__button {
+  transition: all 100ms ease-in;
   transform: scale(1);
   border-radius: 0px;
 }
 
-.wp-block-button:hover {
-  transform: scale(1.1);
+.wp-block-button:hover,
+.wp-block-file__button:hover {
+  transform: scale(1.05);
 }
 
 .wp-block-read-more {
-  transition: all 0.1s ease-in-out;
+  transition: all 100ms ease-in;
   transform: scale(1);
   border-radius: 0px;
   background-color: var(--wp--preset--color--primary);
@@ -133,7 +136,7 @@ textarea {
 }
 
 .wp-block-read-more:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   color: var(--wp--preset--color--base);
 }
 
@@ -162,7 +165,7 @@ textarea {
 /* -- Nav Hover -- */
 
 .wp-block-navigation-item {
-  transition: all 0.1s ease-in-out;
+  transition: all 100ms ease-in;
 }
 
 .wp-block-navigation-item:hover {
@@ -236,5 +239,178 @@ textarea {
 
   .is-style-columns-reverse {
     flex-direction: column-reverse;
+  }
+}
+
+/* ============================================== */
+/* ==================== Code ==================== */
+/* ============================================== */
+
+/* Contact Form 7 & Mailchimp */
+
+.cf7-contactinfo {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.cf7-container p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.cf7-container {
+  padding-top: 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Footer */
+
+.footer-nav > .wp-block-navigation-item:hover {
+  color: var(--wp--preset--color--base);
+}
+
+.mailinglist-signup {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.mc4wp-response div p {
+  color: white;
+}
+
+input[type="submit"] {
+  font-weight: 500;
+}
+
+input[type="submit"]:hover {
+  font-weight: 500;
+  color: var(--wp--preset--color--primary);
+}
+
+.cya-mc-btn {
+  width: 30% !important;
+}
+
+/* Event Calender */
+
+.tribe-events-single-event-title {
+  display: none;
+}
+
+/* Headers */
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  text-decoration: none;
+}
+
+/* Search */
+
+.wp-block-search__button {
+  padding: 16px 20px !important;
+  transform: scale(1);
+}
+
+.wp-block-search__button:hover {
+  padding: 16px 20px !important;
+  transform: scale(1.05);
+}
+
+/* Responsive Menu*/
+
+.nav-desktop {
+  display: none !important;
+}
+
+.nav-mobile {
+  display: block !important;
+}
+
+.nav-mobile-list li a,
+.nav-mobile-list .wp-block-navigation-submenu a {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.nav-mobile-list .wp-block-navigation-submenu ul li a {
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+}
+
+.wp-block-navigation-submenu {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.nav-mobile .wp-block-button a {
+  font-size: 1.25rem !important;
+}
+
+@media only screen and (min-width: 1100px) {
+  /* -- Columns -- */
+
+  .nav-desktop {
+    display: block !important;
+  }
+
+  .nav-mobile {
+    display: none !important;
+  }
+}
+
+/* File / Resources Download */
+
+.wp-block-file {
+  font-size: 18px !important;
+}
+
+.wp-block-file a:nth-child(2) {
+  padding: 16px 24px !important;
+}
+
+.resource-download {
+  padding: 0px !important;
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+.resource-download a:first-child {
+  display: none !important;
+}
+
+.resource-download .wp-block-file__button {
+  margin-left: 0px !important;
+  background: var(--wp--preset--color--base) !important;
+  color: var(--wp--preset--color--primary) !important;
+  width: 100% !important;
+  text-align: center !important;
+  transition: all 100ms ease-in;
+  transform: scale(1);
+}
+
+.resource-download:hover .wp-block-file__button {
+  transform: scale(1.05);
+}
+
+/* Modals */
+
+.wp-block-cloudcatch-light-modal-block__wrapper.is-open {
+  margin-top: 0px !important;
+}
+
+.wp-block-cloudcatch-light-modal-block {
+  max-width: 90% !important;
+}
+
+@media only screen and (min-width: 1100px) {
+  .wp-block-cloudcatch-light-modal-block {
+    max-width: 50% !important;
   }
 }

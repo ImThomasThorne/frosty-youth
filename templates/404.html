@@ -1,19 +1,23 @@
-<!-- wp:group {"metadata":{"name":"Header"},"style":{"position":{"type":"sticky","top":"0px"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"base","className":"is-style-shadow-light","layout":{"type":"default"}} -->
+<!-- wp:group {"metadata":{"name":"Header"},"className":"is-style-shadow-light","style":{"position":{"type":"sticky","top":"0px"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"base","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-shadow-light has-base-background-color has-background" style="margin-top:0;margin-bottom:0"><!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large"}}}} -->
-<main class="wp-block-group" style="margin-top:0;padding-top:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--large)"><!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:heading {"level":1} -->
-<h1 class="wp-block-heading">Not found, error 404</h1>
-<!-- /wp:heading -->
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"primary","textColor":"base","layout":{"type":"default"}} -->
+<div class="wp-block-group has-base-color has-primary-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0"><!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"},"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:heading {"textAlign":"center","level":1,"fontSize":"max-36"} -->
+<h1 class="wp-block-heading has-text-align-center has-max-36-font-size">Not found, error 404</h1>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
 
-<!-- wp:paragraph -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"},"padding":{"top":"var:preset|spacing|large","bottom":"var:preset|spacing|large"},"blockGap":"var:preset|spacing|40"},"dimensions":{"minHeight":"25vh"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","verticalAlignment":"center"}} -->
+<main class="wp-block-group" style="min-height:25vh;margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--large)"><!-- wp:paragraph -->
 <p>Oops, the page you are looking for does not exist or is no longer available. Everything is still awesome. Just use the search form to find your way.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:search {"showLabel":false,"width":75,"widthUnit":"%","buttonText":"Search"} /--></div>
-<!-- /wp:group --></main>
+<!-- wp:search {"showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search"} /--></main>
+<!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->

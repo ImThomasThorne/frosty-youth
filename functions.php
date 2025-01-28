@@ -22,9 +22,6 @@ if ( ! function_exists( 'frost_setup' ) ) {
 		// Enqueue editor stylesheet.
 		add_editor_style( get_template_directory_uri() . '/style.css' );
 
-		// Remove core block patterns.
-		remove_theme_support( 'core-block-patterns' );
-
 	}
 }
 add_action( 'after_setup_theme', 'frost_setup' );
@@ -86,20 +83,6 @@ add_action( 'init', 'frost_register_block_styles' );
 function frost_register_block_pattern_categories() {
 
 	register_block_pattern_category(
-		'frost-page',
-		array(
-			'label'       => __( 'Page', 'frost' ),
-			'description' => __( 'Create a full page with multiple patterns that are grouped together.', 'frost' ),
-		)
-	);
-	register_block_pattern_category(
-		'frost-pricing',
-		array(
-			'label'       => __( 'Pricing', 'frost' ),
-			'description' => __( 'Compare features for your digital products or service plans.', 'frost' ),
-		)
-	);
-	register_block_pattern_category(
 		'cya-blocks',
 		array(
 			'label'       => __( 'CYA Blocks', 'CYA' ),
@@ -110,6 +93,18 @@ function frost_register_block_pattern_categories() {
 }
 
 add_action( 'init', 'frost_register_block_pattern_categories' );
+
+
+/**
+ * Remvoe core block patterns
+ */
+
+add_action( 'after_setup_theme', function() {
+    remove_theme_support( 'core-block-patterns' );
+} );
+
+add_filter( 'should_load_remote_block_patterns', '__return_false' );
+
 
 /**
  * Current Year Shortcode

@@ -1,4 +1,4 @@
-<!-- wp:group {"metadata":{"name":"Header"},"style":{"position":{"type":"sticky","top":"0px"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"base","className":"is-style-shadow-light","layout":{"type":"default"}} -->
+<!-- wp:group {"metadata":{"name":"Header"},"className":"is-style-shadow-light","style":{"position":{"type":"sticky","top":"0px"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"base","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-shadow-light has-base-background-color has-background" style="margin-top:0;margin-bottom:0"><!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /--></div>
 <!-- /wp:group -->
 
@@ -8,16 +8,20 @@
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group" style="margin-top:0;padding-top:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10)"><!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column {"width":"33.33%"} -->
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"0","bottom":"0"},"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:0;padding-bottom:0"><!-- wp:columns {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+<div class="wp-block-columns" style="margin-top:0;margin-bottom:0"><!-- wp:column {"width":"33.33%","style":{"spacing":{"blockGap":"0"}}} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:post-featured-image /-->
 
-<!-- wp:mfb/meta-field-block {"fieldType":"acf","fieldName":"job_title","fieldSettings":[]} /--></div>
+<!-- wp:mfb/meta-field-block {"fieldType":"acf","fieldName":"job_title","style":{"typography":{"fontStyle":"normal","fontWeight":"700"}}} /-->
+
+<!-- wp:mfb/meta-field-block {"fieldType":"acf","fieldName":"email_address","hideEmpty":true} /-->
+
+<!-- wp:mfb/meta-field-block {"fieldType":"acf","fieldName":"phone_number","hideEmpty":true} /--></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"66.66%"} -->
-<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:post-content {"layout":{"type":"constrained"}} /--></div>
+<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:post-content {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained"}} /--></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></main>
 <!-- /wp:group -->
