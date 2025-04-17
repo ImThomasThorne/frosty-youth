@@ -6,7 +6,7 @@ Author URI:
 Requires at least: 6.7
 Tested up to: 6.7.1
 Requires PHP: 7.0
-Version: 2.1.2
+Version: 2.3.0
 Text Domain: frosty-youth
 */
 
@@ -429,4 +429,46 @@ h6 a {
   .wp-block-cloudcatch-light-modal-block {
     max-width: 50% !important;
   }
+}
+
+/* 
+
+  Responsive Grids
+
+*/
+
+.cya-grid-responsive-3,
+.cya-grid-responsive-4 {
+  grid-template-columns: 1fr !important;
+}
+
+@media only screen and (min-width: 900px) {
+  .cya-grid-responsive-3,
+  .cya-grid-responsive-4 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .cya-grid-responsive-3 {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .cya-grid-responsive-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  }
+}
+
+/* 
+
+  @media Blanks
+
+*/
+
+@media only screen and (min-width: 900px) {
+}
+
+@media only screen and (min-width: 1200px) {
 }
