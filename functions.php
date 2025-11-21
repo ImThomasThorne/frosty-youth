@@ -17,7 +17,7 @@ if ( ! function_exists( 'frost_setup' ) ) {
 	function frost_setup() {
 
 		// Make theme available for translation.
-		load_theme_textdomain( 'frost', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'frosty-youth', get_template_directory() . '/languages' );
 
 		// Enqueue editor stylesheet.
 		add_editor_style( get_template_directory_uri() . '/style.css' );
@@ -43,21 +43,21 @@ function frost_register_block_styles() {
 
 	$block_styles = array(
 		'core/columns' => array(
-			'columns-reverse' => __( 'Reverse', 'frost' ),
+			'columns-reverse' => __( 'Reverse', 'frosty-youth' ),
 		),
 		'core/group' => array(
-			'shadow-light' => __( 'Shadow', 'frost' ),
-			'shadow-solid' => __( 'Solid', 'frost' ),
+			'shadow-light' => __( 'Shadow', 'frosty-youth' ),
+			'shadow-solid' => __( 'Solid', 'frosty-youth' ),
 		),
 		'core/list' => array(
-			'no-disc' => __( 'No Disc', 'frost' ),
+			'no-disc' => __( 'No Disc', 'frosty-youth' ),
 		),
 		'core/quote' => array(
-			'shadow-light' => __( 'Shadow', 'frost' ),
-			'shadow-solid' => __( 'Solid', 'frost' ),
+			'shadow-light' => __( 'Shadow', 'frosty-youth' ),
+			'shadow-solid' => __( 'Solid', 'frosty-youth' ),
 		),
 		'core/social-links' => array(
-			'outline' => __( 'Outline', 'frost' ),
+			'outline' => __( 'Outline', 'frosty-youth' ),
 		),
 	);
 
@@ -85,8 +85,8 @@ function frost_register_block_pattern_categories() {
 	register_block_pattern_category(
 		'cya-blocks',
 		array(
-			'label'       => __( 'CYA Blocks', 'CYA' ),
-			'description' => __( 'Blocks used by CYA', 'CYA' ),
+			'label'       => __( 'CYA Blocks', 'frosty-youth' ),
+			'description' => __( 'Blocks used by CYA', 'frosty-youth' ),
 		)
 	);
 
@@ -96,7 +96,7 @@ add_action( 'init', 'frost_register_block_pattern_categories' );
 
 
 /**
- * Remvoe core block patterns
+ * Remove core block patterns
  */
 
 add_action( 'after_setup_theme', function() {
@@ -111,7 +111,7 @@ add_filter( 'should_load_remote_block_patterns', '__return_false' );
  */
 
  function current_year() {
-	return date('Y');
+	return wp_date('Y');
 }
 
 add_shortcode('current-year', 'current_year');

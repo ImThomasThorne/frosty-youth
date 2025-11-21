@@ -1,12 +1,15 @@
 /*
 Theme Name: Frosty Youth
 Theme URI: https://cya.org.uk
-Author: WP Engine - Modified by Thomas Thorne
-Author URI:
+Description: A custom WordPress block theme for Cheshire Youth Association, based on WP Engine's Frost theme. Features clean, modern design with custom CYA branding, responsive layouts, and full site editing capabilities.
+Author: WP Engine, Thomas Thorne
+Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 6.7.1
 Requires PHP: 7.0
-Version: 2.5.0
+Version: 2.6.0
+License: GNU General Public License v3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
 */
 
@@ -17,7 +20,6 @@ Text Domain: frosty-youth
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: all 100ms ease-in;
 }
 
 html {
@@ -176,8 +178,6 @@ textarea {
 
 .wp-block-navigation:not(.has-background)
   .wp-block-navigation__submenu-container {
-  /* background-color: var(--wp--preset--color--contrast);
-  color: var(--wp--preset--color--base); */
   padding: 10px;
 }
 
@@ -186,12 +186,12 @@ textarea {
 }
 
 .wp-block-navigation__responsive-container-open svg {
-  fill: black !important;
+  fill: var(--wp--preset--color--contrast);
 }
 
 .wp-block-navigation__responsive-container-close,
 .wp-block-navigation__responsive-container-open {
-  border: 1px solid black !important;
+  border: 1px solid var(--wp--preset--color--contrast);
 }
 
 /* Utility
@@ -206,31 +206,6 @@ textarea {
 .is-style-shadow-solid {
   box-shadow: var(--wp--preset--shadow--solid);
 }
-
-/*  Block: Separator
----------------------------------------- */
-
-/* :root hr[class*="is-style-frostythorne-angled-separator"] {
-  background-color: transparent !important;
-  background-image: linear-gradient(
-    -45deg,
-    currentColor 25%,
-    transparent 25%,
-    transparent 50%,
-    currentColor 50%,
-    currentColor 75%,
-    transparent 75%,
-    transparent
-  );
-  background-size: 5px 5px;
-  border: none;
-  height: 10px !important;
-  max-width: 100%;
-}
-
-:root hr.is-style-frostythorne-angled-separator-wide {
-  width: 100% !important;
-} */
 
 /* Media Queries
 ---------------------------------------- */
@@ -326,11 +301,6 @@ textarea {
     flex-direction: column !important;
     gap: 0.5rem;
   }
-
-  /* .cya-mc-email,
-  .cya-mc-btn {
-    width: 100% !important;
-  } */
 }
 
 /* Event Calender */
@@ -449,11 +419,7 @@ h6 a {
   }
 }
 
-/* 
-
-  Responsive Grids
-
-*/
+/* Responsive Grids */
 
 .cya-grid-responsive-3,
 .cya-grid-responsive-4 {
@@ -477,16 +443,4 @@ h6 a {
   .cya-grid-responsive-4 {
     grid-template-columns: 1fr 1fr 1fr 1fr !important;
   }
-}
-
-/* 
-
-  @media Blanks
-
-*/
-
-@media only screen and (min-width: 900px) {
-}
-
-@media only screen and (min-width: 1200px) {
 }
