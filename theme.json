@@ -3,6 +3,12 @@
 	"customTemplates": [],
 	"settings": {
 		"appearanceTools": true,
+		"border": {
+			"radius": true,
+			"color": true,
+			"style": true,
+			"width": true
+		},
 		"blocks": {
 			"core/button": {
 				"spacing": {
@@ -107,6 +113,12 @@
 			]
 		},
 		"custom": {
+			"borderRadius": {
+				"small": "8px",
+				"medium": "16px",
+				"large": "24px",
+				"xLarge": "32px"
+			},
 			"fontWeight": {
 				"black": 900,
 				"bold": 700,
@@ -439,40 +451,27 @@
 				"variations": {
 					"outline": {
 						"border": {
-							"bottom": {
-								"color": "currentColor",
-								"style": "solid",
-								"width": "2px"
-							},
-							"color": "currentColor",
-							"left": {
-								"color": "currentColor",
-								"style": "solid",
-								"width": "2px"
-							},
-							"right": {
-								"color": "currentColor",
-								"style": "solid",
-								"width": "2px"
-							},
+							"color": "var(--wp--preset--color--primary)",
 							"style": "solid",
-							"top": {
-								"color": "currentColor",
-								"style": "solid",
-								"width": "2px"
-							},
-							"width": "1px"
+							"width": "2px"
 						},
 						"color": {
+							"background": "transparent",
 							"text": "var(--wp--preset--color--primary)"
 						},
 						"spacing": {
 							"padding": {
-								"bottom": "0.9rem",
-								"left": "var(--wp--preset--spacing--20)",
-								"right": "var(--wp--preset--spacing--20)",
-								"top": "0.9rem"
+								"bottom": "calc(var(--wp--preset--spacing--10) - 2px)",
+								"left": "calc(var(--wp--preset--spacing--20) - 2px)",
+								"right": "calc(var(--wp--preset--spacing--20) - 2px)",
+								"top": "calc(var(--wp--preset--spacing--10) - 2px)"
 							}
+						}
+					},
+					"secondary": {
+						"color": {
+							"background": "var(--wp--preset--color--secondary)",
+							"text": "var(--wp--preset--color--base)"
 						}
 					}
 				}
@@ -753,7 +752,7 @@
 					}
 				},
 				"border": {
-					"radius": "0px"
+					"radius": "var(--wp--custom--border-radius--small)"
 				},
 				"color": {
 					"background": "var(--wp--preset--color--primary)",

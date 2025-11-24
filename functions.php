@@ -34,6 +34,19 @@ function frost_enqueue_stylesheet() {
 
 }
 
+// Enqueue editor styles to hide unwanted button styles
+add_action( 'enqueue_block_editor_assets', 'frost_editor_styles' );
+function frost_editor_styles() {
+	wp_add_inline_style( 'wp-edit-blocks', '
+		/* Hide unwanted button style options in editor */
+		.block-editor-block-styles__item[aria-label*="Fill"],
+		.block-editor-block-styles__item[aria-label*="3D"],
+		.block-editor-block-styles__item[aria-label*="Shadow"] {
+			display: none !important;
+		}
+	' );
+}
+
 /**
  * Register block styles.
  *
@@ -42,6 +55,10 @@ function frost_enqueue_stylesheet() {
 function frost_register_block_styles() {
 
 	$block_styles = array(
+		'core/button' => array(
+			'outline' => __( 'Outline', 'frosty-youth' ),
+			'secondary' => __( 'Secondary', 'frosty-youth' ),
+		),
 		'core/columns' => array(
 			'columns-reverse' => __( 'Reverse', 'frosty-youth' ),
 		),
@@ -74,6 +91,21 @@ function frost_register_block_styles() {
 	}
 }
 add_action( 'init', 'frost_register_block_styles' );
+
+/**
+ * Unregister default button styles.
+ *
+ * @since 2.6.0
+ */
+function frost_unregister_button_styles() {
+	// Unregister WordPress core button styles
+	unregister_block_style( 'core/button', 'fill' );
+	unregister_block_style( 'core/button', 'default' );
+
+	// Unregister theme-specific styles we don't want
+	unregister_block_style( 'core/social-links', 'outline' );
+}
+add_action( 'init', 'frost_unregister_button_styles', 100 );
 
 /**
  * Register block pattern categories.
