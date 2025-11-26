@@ -532,6 +532,11 @@ h6 a {
 
 /* Search */
 
+.wp-block-search__input {
+  border: 1px solid var(--wp--preset--color--contrast) !important;
+  border-radius: var(--wp--custom--border-radius--small) !important;
+}
+
 .wp-block-search__button {
   padding: 16px 20px;
   transform: scale(1);
