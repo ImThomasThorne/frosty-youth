@@ -3,12 +3,6 @@
 	"customTemplates": [],
 	"settings": {
 		"appearanceTools": true,
-		"border": {
-			"radius": true,
-			"color": true,
-			"style": true,
-			"width": true
-		},
 		"blocks": {
 			"core/button": {
 				"spacing": {
@@ -114,9 +108,9 @@
 		},
 		"custom": {
 			"borderRadius": {
-				"small": "8px",
-				"medium": "16px",
 				"large": "24px",
+				"medium": "16px",
+				"small": "8px",
 				"xLarge": "32px"
 			},
 			"fontWeight": {
@@ -451,8 +445,28 @@
 				"variations": {
 					"outline": {
 						"border": {
+							"bottom": {
+								"color": "currentColor",
+								"style": "solid",
+								"width": "2px"
+							},
 							"color": "var(--wp--preset--color--primary)",
+							"left": {
+								"color": "currentColor",
+								"style": "solid",
+								"width": "2px"
+							},
+							"right": {
+								"color": "currentColor",
+								"style": "solid",
+								"width": "2px"
+							},
 							"style": "solid",
+							"top": {
+								"color": "currentColor",
+								"style": "solid",
+								"width": "2px"
+							},
 							"width": "2px"
 						},
 						"color": {
@@ -461,10 +475,10 @@
 						},
 						"spacing": {
 							"padding": {
-								"bottom": "calc(var(--wp--preset--spacing--10) - 2px)",
-								"left": "calc(var(--wp--preset--spacing--20) - 2px)",
-								"right": "calc(var(--wp--preset--spacing--20) - 2px)",
-								"top": "calc(var(--wp--preset--spacing--10) - 2px)"
+								"bottom": "0.9rem",
+								"left": "var(--wp--preset--spacing--20)",
+								"right": "var(--wp--preset--spacing--20)",
+								"top": "0.9rem"
 							}
 						}
 					},
