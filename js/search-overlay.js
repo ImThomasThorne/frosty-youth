@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Find the original search form in the header
-  const headerSearch = document.querySelector('.wp-block-navigation .wp-block-search');
+  // Find all search forms in the header (both desktop and mobile)
+  const searchForms = document.querySelectorAll('.wp-block-navigation .wp-block-search');
 
-  if (!headerSearch) return;
+  if (searchForms.length === 0) return;
 
   // Create overlay elements
   const overlay = document.createElement('div');
@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
   closeButton.innerHTML = '&times;';
   closeButton.setAttribute('aria-label', 'Close search');
 
-  // Clone the search form for the overlay
-  const searchClone = headerSearch.cloneNode(true);
+  // Clone the first search form for the overlay
+  const searchClone = searchForms[0].cloneNode(true);
 
   // Make sure the cloned input is visible in the overlay
   const clonedInput = searchClone.querySelector('.wp-block-search__input');
@@ -32,24 +32,27 @@ document.addEventListener('DOMContentLoaded', function() {
   overlay.appendChild(overlayContent);
   document.body.appendChild(overlay);
 
-  // Get header button
-  const headerButton = headerSearch.querySelector('.wp-block-search__button');
+  // Function to open overlay
+  function openOverlay(e) {
+    e.preventDefault();
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
 
-  // Open overlay when header search button is clicked
-  if (headerButton) {
-    headerButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      overlay.classList.add('active');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-
-      // Focus on the search input in the overlay
-      const overlayInput = overlay.querySelector('.wp-block-search__input');
-      if (overlayInput) {
-        setTimeout(() => overlayInput.focus(), 100);
-      }
-    });
+    // Focus on the search input in the overlay
+    const overlayInput = overlay.querySelector('.wp-block-search__input');
+    if (overlayInput) {
+      setTimeout(() => overlayInput.focus(), 100);
+    }
   }
+
+  // Attach click handlers to ALL search buttons (desktop and mobile)
+  searchForms.forEach(function(searchForm) {
+    const searchButton = searchForm.querySelector('.wp-block-search__button');
+    if (searchButton) {
+      searchButton.addEventListener('click', openOverlay);
+    }
+  });
 
   // Close overlay function
   function closeOverlay() {
