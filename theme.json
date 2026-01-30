@@ -350,13 +350,19 @@
 			],
 			"fontSizes": [
 				{
-					"fluid": false,
+					"fluid": {
+						"max": "16px",
+						"min": "14px"
+					},
 					"name": "xSmall",
 					"size": "16px",
 					"slug": "x-small"
 				},
 				{
-					"fluid": false,
+					"fluid": {
+						"max": "18px",
+						"min": "16px"
+					},
 					"name": "Small",
 					"size": "18px",
 					"slug": "small"
@@ -364,7 +370,7 @@
 				{
 					"fluid": {
 						"max": "20px",
-						"min": "18px"
+						"min": "17px"
 					},
 					"name": "Medium",
 					"size": "20px",
@@ -373,7 +379,7 @@
 				{
 					"fluid": {
 						"max": "24px",
-						"min": "20px"
+						"min": "19px"
 					},
 					"name": "Large",
 					"size": "24px",
@@ -382,7 +388,7 @@
 				{
 					"fluid": {
 						"max": "30px",
-						"min": "24px"
+						"min": "22px"
 					},
 					"name": "xLarge",
 					"size": "30px",
@@ -391,7 +397,7 @@
 				{
 					"fluid": {
 						"max": "36px",
-						"min": "30px"
+						"min": "26px"
 					},
 					"name": "36px",
 					"size": "36px",
@@ -400,7 +406,7 @@
 				{
 					"fluid": {
 						"max": "48px",
-						"min": "36px"
+						"min": "30px"
 					},
 					"name": "48px",
 					"size": "48px",
@@ -409,7 +415,7 @@
 				{
 					"fluid": {
 						"max": "60px",
-						"min": "42px"
+						"min": "36px"
 					},
 					"name": "60px",
 					"size": "60px",
@@ -418,7 +424,7 @@
 				{
 					"fluid": {
 						"max": "72px",
-						"min": "48px"
+						"min": "40px"
 					},
 					"name": "72px",
 					"size": "72px",
