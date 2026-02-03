@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 6.9
 Requires PHP: 7.4
-Version: 4.1.0
+Version: 5.0.0
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -994,5 +994,22 @@ h6 a {
 
   .homepage-slider__dots {
     bottom: var(--wp--preset--spacing--20);
+  }
+}
+
+/* Page Banner */
+
+.page-title-banner {
+  width: 75% !important;
+  max-width: 75% !important;
+  /* margin-left: var(--wp--preset--spacing--30) !important;
+  margin-right: auto !important;
+  align-self: flex-start !important; */
+}
+
+@media only screen and (max-width: 1100px) {
+  .page-title-banner {
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
