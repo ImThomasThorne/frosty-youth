@@ -186,11 +186,18 @@ function cya_register_acf_blocks() {
 	}
 
 	// Register Homepage Slider Block
+	$block_template = get_template_directory() . '/blocks/homepage-slider/homepage-slider.php';
+
+	// Debug: Check if template file exists
+	if ( ! file_exists( $block_template ) ) {
+		error_log( 'ACF Block Template Not Found: ' . $block_template );
+	}
+
 	acf_register_block_type( array(
 		'name'              => 'homepage-slider',
 		'title'             => __( 'Homepage Slider', 'frosty-youth' ),
 		'description'       => __( 'A custom slider block for the homepage with multiple images, text overlay, and a button', 'frosty-youth' ),
-		'render_callback'   => 'cya_homepage_slider_render_callback',
+		'render_template'   => $block_template,
 		'category'          => 'cya-blocks',
 		'icon'              => 'images-alt2',
 		'keywords'          => array( 'slider', 'carousel', 'images', 'homepage' ),
@@ -201,19 +208,6 @@ function cya_register_acf_blocks() {
 		),
 		'enqueue_style'     => get_template_directory_uri() . '/style.css',
 	) );
-}
-
-/**
- * Render callback for Homepage Slider block
- */
-function cya_homepage_slider_render_callback( $block, $content = '', $is_preview = false, $post_id = 0 ) {
-	$template_path = get_template_directory() . '/blocks/homepage-slider/homepage-slider.php';
-
-	if ( file_exists( $template_path ) ) {
-		include $template_path;
-	} else {
-		echo '<div class="acf-block-error">Homepage Slider template not found at: ' . esc_html( $template_path ) . '</div>';
-	}
 }
 
 /**
