@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Find all search forms in the header (both desktop and mobile)
   const searchForms = document.querySelectorAll('.wp-block-navigation .wp-block-search');
 
-  if (searchForms.length === 0) return;
+  // Find any custom search trigger buttons (add class 'search-trigger' to any element in WordPress)
+  const customTriggers = document.querySelectorAll('.search-trigger');
+
+  if (searchForms.length === 0 && customTriggers.length === 0) return;
 
   // Create overlay elements
   const overlay = document.createElement('div');
@@ -17,13 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
   closeButton.innerHTML = '&times;';
   closeButton.setAttribute('aria-label', 'Close search');
 
-  // Clone the first search form for the overlay
-  const searchClone = searchForms[0].cloneNode(true);
-
-  // Make sure the cloned input is visible in the overlay
-  const clonedInput = searchClone.querySelector('.wp-block-search__input');
-  if (clonedInput) {
-    clonedInput.style.display = 'block';
+  // Use search form from nav if available, otherwise create a basic search form
+  let searchClone;
+  if (searchForms.length > 0) {
+    searchClone = searchForms[0].cloneNode(true);
+    const clonedInput = searchClone.querySelector('.wp-block-search__input');
+    if (clonedInput) {
+      clonedInput.style.display = 'block';
+    }
+  } else {
+    searchClone = document.createElement('form');
+    searchClone.setAttribute('role', 'search');
+    searchClone.setAttribute('method', 'get');
+    searchClone.setAttribute('action', '/');
+    searchClone.className = 'wp-block-search';
+    searchClone.innerHTML = `
+      <div class="wp-block-search__inside-wrapper">
+        <input type="search" class="wp-block-search__input" name="s" placeholder="Search..." />
+        <button type="submit" class="wp-block-search__button">Search</button>
+      </div>
+    `;
   }
 
   // Assemble overlay
@@ -46,12 +62,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Attach click handlers to ALL search buttons (desktop and mobile)
+  // Attach click handlers to nav search buttons
   searchForms.forEach(function(searchForm) {
     const searchButton = searchForm.querySelector('.wp-block-search__button');
     if (searchButton) {
       searchButton.addEventListener('click', openOverlay);
     }
+  });
+
+  // Attach click handlers to any custom .search-trigger elements
+  customTriggers.forEach(function(trigger) {
+    trigger.addEventListener('click', openOverlay);
   });
 
   // Close overlay function
