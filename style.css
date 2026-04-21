@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 6.9
 Requires PHP: 7.4
-Version: 6.8.0
+Version: 7.2.1
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -438,6 +438,19 @@ iframe[src*="youtu.be"] {
 
 /* MC4WP Newsletter Form Styling */
 
+.cya-newsletter-form {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.cya-newsletter-email {
+  width: 75% !important;
+}
+
+.cya-newsletter-submit {
+  width: auto;
+}
+
 .mc4wp-form {
   font-family: var(--wp--preset--font-family--poppins);
 }
@@ -464,6 +477,11 @@ iframe[src*="youtu.be"] {
   outline: none;
 }
 
+.mc4wp-form input[type="checkbox"] {
+  width: 1rem;
+  aspect-ratio: 1/1;
+}
+
 .mc4wp-form ::placeholder {
   color: var(--wp--preset--color--contrast);
   font-size: var(--wp--preset--font-size--small);
@@ -471,8 +489,8 @@ iframe[src*="youtu.be"] {
 }
 
 .mc4wp-form input[type="submit"] {
-  background-color: var(--wp--preset--color--base) !important;
   color: var(--wp--preset--color--primary) !important;
+  background-color: var(--wp--preset--color--base) !important;
   border: none;
   border-radius: var(--wp--custom--border-radius--small) !important;
   padding: 10px 20px !important;
@@ -481,17 +499,17 @@ iframe[src*="youtu.be"] {
   line-height: var(--wp--custom--line-height--medium) !important;
   cursor: pointer;
   transition: all 100ms ease-in;
-  transform: scale(1);
+  transform: scale(1) !important;
   font-family: var(--wp--preset--font-family--poppins);
 }
 
 .mc4wp-form input[type="submit"]:hover {
-  transform: scale(1.05);
-  background-color: var(--wp--preset--color--base) !important;
+  transform: scale(1) !important;
   color: var(--wp--preset--color--primary) !important;
+  background-color: var(--wp--preset--color--base) !important;
 }
 
-.mc4wp-response div p {
+/* .mc4wp-response div p {
   color: white;
   font-size: var(--wp--preset--font-size--small);
   padding: 1rem;
@@ -510,13 +528,23 @@ iframe[src*="youtu.be"] {
   gap: 0.5rem;
 }
 
+.mailinglist-names > p {
+  margin-top: 0px !important;
+}
+
+.mailinglist-choice {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.25rem;
+}
+
 .cya-mc-email {
   width: 100% !important;
 }
 
 .cya-mc-btn {
   width: 50% !important;
-}
+} */
 
 @media only screen and (max-width: 1100px) {
   .mailinglist-names {
@@ -638,6 +666,12 @@ h6 a {
   color: var(--wp--preset--color--base) !important;
   /* padding: 15px 30px !important; */
   font-size: var(--wp--preset--font-size--medium) !important;
+}
+
+.search-margin-fix
+  > .wp-block-search__inside-wrapper
+  > .wp-block-search__button {
+  margin-left: 0px !important;
 }
 
 /* Responsive Menu*/
