@@ -222,8 +222,19 @@ function cya_acf_admin_notice() {
 }
 
 /**
- * Include ACF field definitions
+ * Remove 'Archives:' and similar prefixes from event archive titles.
+ * Covers the page heading, the browser <title> tag, and The Events Calendar's
+ * own title output.
  */
-if ( file_exists( get_template_directory() . '/blocks/homepage-slider/fields.php' ) ) {
-	require_once get_template_directory() . '/blocks/homepage-slider/fields.php';
+function frosty_youth_clean_archive_title( $title ) {
+	return preg_replace( '/^[^:]+:\s*/', '', $title );
 }
+add_filter( 'get_the_archive_title', 'frosty_youth_clean_archive_title' );
+add_filter( 'tribe_get_events_title', 'frosty_youth_clean_archive_title' );
+
+add_filter( 'document_title_parts', function( $parts ) {
+	if ( is_archive() && isset( $parts['title'] ) ) {
+		$parts['title'] = frosty_youth_clean_archive_title( $parts['title'] );
+	}
+	return $parts;
+} );

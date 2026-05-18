@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 6.9
 Requires PHP: 7.4
-Version: 7.2.3
+Version: 8.5.0
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -298,9 +298,11 @@ iframe[src*="youtu.be"] {
 
   /* -- Footer -- */
 
-  .footer-nav {
+  .footer-nav,
+  .footer-copyright {
     justify-content: center !important;
     text-align: center;
+    gap: 1rem !important;
   }
 }
 
@@ -567,6 +569,27 @@ iframe[src*="youtu.be"] {
   display: none;
 }
 
+.tribe-events .tribe-events-l-container {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.tribe-common .tribe-common-l-container {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  max-width: none !important;
+}
+
+#tribe-events-pg-template,
+.tribe-events-pg-template {
+  max-width: none !important;
+}
+
+#tribe-events-pg-template,
+.tribe-events-pg-template {
+  padding: 0px !important;
+}
+
 /* Headers */
 
 h1 a,
@@ -702,6 +725,16 @@ h6 a {
   font-weight: 500;
 }
 
+.nav-mobile-list > .wp-block-navigation-submenu > ul {
+  display: flex !important;
+  gap: 0.25rem !important;
+}
+
+.nav-mobile-list > .wp-block-navigation-submenu > ul > li > a {
+  padding: 0rem !important;
+  margin: 0rem !important;
+}
+
 .wp-block-navigation-submenu {
   padding: 0px !important;
   margin: 0px !important;
@@ -817,230 +850,6 @@ h6 a {
 
 .news-card-container > * {
   flex: 1;
-}
-
-/* Homepage Slider */
-
-.homepage-slider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.homepage-slider__wrapper {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  background-color: var(--wp--preset--color--contrast);
-}
-
-.homepage-slider__slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.homepage-slider__slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 800ms ease-in-out;
-  z-index: 1;
-}
-
-.homepage-slider__slide.active {
-  opacity: 1;
-  z-index: 2;
-}
-
-.homepage-slider__slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 0 !important;
-}
-
-.homepage-slider__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
-  z-index: 3;
-  padding: var(--wp--preset--spacing--30);
-}
-
-.homepage-slider__content {
-  text-align: center;
-  max-width: 800px;
-  color: var(--wp--preset--color--base);
-}
-
-.homepage-slider__title {
-  font-size: var(--wp--preset--font-size--max-60);
-  font-weight: var(--wp--custom--font-weight--black);
-  color: var(--wp--preset--color--base);
-  margin-bottom: var(--wp--preset--spacing--20);
-  line-height: var(--wp--custom--line-height--heading);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.homepage-slider__text {
-  font-size: var(--wp--preset--font-size--large);
-  color: var(--wp--preset--color--base);
-  margin-bottom: var(--wp--preset--spacing--30);
-  line-height: var(--wp--custom--line-height--medium);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.homepage-slider__button {
-  background-color: var(--wp--preset--color--primary) !important;
-  color: var(--wp--preset--color--base) !important;
-  padding: var(--wp--preset--spacing--10) var(--wp--preset--spacing--30) !important;
-  font-size: var(--wp--preset--font-size--small) !important;
-  font-weight: var(--wp--custom--font-weight--semi-bold) !important;
-  text-decoration: none !important;
-  border-radius: var(--wp--custom--border-radius--small) !important;
-  display: inline-block;
-  transition: all 100ms ease-in;
-  transform: scale(1);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.homepage-slider__button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
-}
-
-/* Navigation Arrows */
-
-.homepage-slider__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 4;
-  transition: all 100ms ease-in;
-  color: var(--wp--preset--color--contrast);
-}
-
-.homepage-slider__arrow:hover {
-  background-color: var(--wp--preset--color--base);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.homepage-slider__arrow--prev {
-  left: var(--wp--preset--spacing--20);
-}
-
-.homepage-slider__arrow--next {
-  right: var(--wp--preset--spacing--20);
-}
-
-/* Dots Navigation */
-
-.homepage-slider__dots {
-  position: absolute;
-  bottom: var(--wp--preset--spacing--30);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  z-index: 4;
-}
-
-.homepage-slider__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 2px solid var(--wp--preset--color--base);
-  cursor: pointer;
-  transition: all 100ms ease-in;
-  padding: 0;
-}
-
-.homepage-slider__dot:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  transform: scale(1.2);
-}
-
-.homepage-slider__dot.active {
-  background-color: var(--wp--preset--color--base);
-  transform: scale(1.3);
-}
-
-/* Responsive Adjustments */
-
-@media only screen and (max-width: 782px) {
-  .homepage-slider__wrapper {
-    height: 500px;
-  }
-
-  .homepage-slider__title {
-    font-size: var(--wp--preset--font-size--max-36);
-  }
-
-  .homepage-slider__text {
-    font-size: var(--wp--preset--font-size--medium);
-  }
-
-  .homepage-slider__arrow {
-    width: 40px;
-    height: 40px;
-  }
-
-  .homepage-slider__arrow--prev {
-    left: var(--wp--preset--spacing--10);
-  }
-
-  .homepage-slider__arrow--next {
-    right: var(--wp--preset--spacing--10);
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .homepage-slider__wrapper {
-    height: 400px;
-  }
-
-  .homepage-slider__title {
-    font-size: var(--wp--preset--font-size--large);
-    margin-bottom: var(--wp--preset--spacing--10);
-  }
-
-  .homepage-slider__text {
-    font-size: var(--wp--preset--font-size--small);
-    margin-bottom: var(--wp--preset--spacing--20);
-  }
-
-  .homepage-slider__overlay {
-    padding: var(--wp--preset--spacing--20);
-  }
-
-  .homepage-slider__dots {
-    bottom: var(--wp--preset--spacing--20);
-  }
 }
 
 /* Page Banner */
