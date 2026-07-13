@@ -94,6 +94,21 @@
           "color": "#F9B233",
           "name": "Tertiary",
           "slug": "tertiary"
+        },
+        {
+          "color": "#F27FBE",
+          "name": "Light Pink",
+          "slug": "l-pink"
+        },
+        {
+          "color": "#FCD899",
+          "name": "Light Yellow",
+          "slug": "l-yellow"
+        },
+        {
+          "color": "#7FCA9F",
+          "name": "Light Green",
+          "slug": "l-green"
         }
       ]
     },

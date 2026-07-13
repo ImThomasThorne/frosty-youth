@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Version: 8.6.1
+Version: 8.7.2
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -201,6 +201,31 @@ iframe[src*="youtu.be"] {
 }
 
 /* -- Navigation -- */
+
+.wp-block-navigation__responsive-container.disable-default-overlay.is-menu-open
+  .wp-block-navigation__responsive-container-content
+  .wp-block-navigation__overlay-container
+  .wp-block-navigation__submenu-container {
+  left: auto !important;
+  right: 0 !important;
+}
+
+.wp-block-navigation
+  .has-child
+  .wp-block-navigation__submenu-container
+  > .wp-block-navigation-item
+  > .wp-block-navigation-item__content
+  > .wp-block-navigation-item__label {
+  text-align: right !important;
+  width: max-content !important;
+}
+
+.mobile-submenu > ul > li > a {
+  /* width: 300px !important; */
+  width: fit-content !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+}
 
 /* .wp-block-navigation__responsive-container.is-menu-open {
   padding: var(--wp--custom--spacing--gap);
@@ -888,5 +913,9 @@ h6 a {
 }
 
 .cya-shop-accordion > h3 > button:hover {
+  transform: scale(1) !important;
+}
+
+.edit-post-meta-boxes-main__presenter > button:hover {
   transform: scale(1) !important;
 }
