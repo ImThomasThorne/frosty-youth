@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Version: 8.7.2
+Version: 9.2.0
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -126,8 +126,7 @@ textarea {
 .wp-block-read-more,
 .wp-block-search__button,
 input[type="submit"],
-input[type="button"],
-button {
+input[type="button"] {
   border-radius: var(--wp--custom--border-radius--small) !important;
   transition: all 100ms ease-in;
   transform: scale(1);
@@ -138,8 +137,7 @@ button {
 .wp-block-read-more:hover,
 .wp-block-search__button:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover,
-button:hover {
+input[type="button"]:hover {
   transform: scale(1.05);
 }
 
@@ -221,61 +219,10 @@ iframe[src*="youtu.be"] {
 }
 
 .mobile-submenu > ul > li > a {
-  /* width: 300px !important; */
   width: fit-content !important;
   display: flex !important;
   justify-content: flex-end !important;
 }
-
-/* .wp-block-navigation__responsive-container.is-menu-open {
-  padding: var(--wp--custom--spacing--gap);
-}
-
-.wp-block-navigation__responsive-container.is-menu-open
-  .wp-block-navigation__responsive-container-content {
-  padding-top: var(--wp--custom--spacing--gap);
-}
-
-.wp-block-navigation__responsive-container-close,
-.wp-block-navigation__responsive-container-open {
-  border: 1px solid currentColor;
-  padding: 2px;
-}
-
-.has-background .wp-block-navigation__responsive-container-open:focus,
-.has-background .wp-block-navigation__responsive-container-open:hover {
-  color: var(--wp--preset--color--base);
-} */
-
-/* -- Nav Hover -- */
-
-/* .wp-block-navigation-item {
-  transition: all 100ms ease-in;
-}
-
-.wp-block-navigation-item:hover {
-  color: var(--wp--preset--color--primary);
-} */
-
-/* -- Navigation Submenu -- */
-
-/* .wp-block-navigation:not(.has-background)
-  .wp-block-navigation__submenu-container {
-  padding: 10px;
-}
-
-.wp-block-navigation :where(.wp-block-navigation__submenu-container) a {
-  padding: 2px 10px;
-}
-
-.wp-block-navigation__responsive-container-open svg {
-  fill: var(--wp--preset--color--contrast);
-}
-
-.wp-block-navigation__responsive-container-close,
-.wp-block-navigation__responsive-container-open {
-  border: 1px solid var(--wp--preset--color--contrast);
-} */
 
 /* Utility
 ---------------------------------------- */
@@ -793,12 +740,14 @@ h6 a {
   font-size: 18px;
 }
 
-.resource-download {
+.resource-download,
+.resource-download-colour {
   padding: 0px !important;
   background: rgba(0, 0, 0, 0) !important;
 }
 
-.resource-download a:first-child {
+.resource-download a:first-child,
+.resource-download-colour a:first-child {
   display: none;
 }
 
@@ -817,6 +766,24 @@ h6 a {
 }
 
 .resource-download > .wp-block-file__button {
+  padding: var(--wp--preset--spacing--10) var(--wp--preset--spacing--20) !important;
+}
+
+.resource-download-colour .wp-block-file__button {
+  margin-left: 0px !important;
+  background: var(--wp--preset--color--primary) !important;
+  color: var(--wp--preset--color--base) !important;
+  width: 100%;
+  text-align: center !important;
+  transition: all 100ms ease-in;
+  transform: scale(1);
+}
+
+.resource-download-colour:hover .wp-block-file__button {
+  transform: scale(1.01);
+}
+
+.resource-download-colour > .wp-block-file__button {
   padding: var(--wp--preset--spacing--10) var(--wp--preset--spacing--20) !important;
 }
 
@@ -916,6 +883,10 @@ h6 a {
   transform: scale(1) !important;
 }
 
-.edit-post-meta-boxes-main__presenter > button:hover {
+.edit-post-meta-boxes-main__presenter > button {
+  transform: scale(1) !important;
+}
+
+.edit-post-meta-boxes-main__presenter:hover > button:hover {
   transform: scale(1) !important;
 }

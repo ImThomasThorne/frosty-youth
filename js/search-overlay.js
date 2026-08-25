@@ -79,7 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function closeOverlay() {
     overlay.classList.remove('active');
     overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    // Only restore scroll if the WP nav overlay is not also open
+    if (!document.querySelector('.wp-block-navigation__responsive-container.is-menu-open')) {
+      document.body.style.overflow = '';
+    }
   }
 
   // Close on close button click
