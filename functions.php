@@ -42,6 +42,14 @@ function frost_enqueue_search_overlay() {
 
 }
 
+// Enqueue mobile submenu accordion script.
+add_action( 'wp_enqueue_scripts', 'frost_enqueue_mobile_submenu' );
+function frost_enqueue_mobile_submenu() {
+
+	wp_enqueue_script( 'frost-mobile-submenu', get_template_directory_uri() . '/js/mobile-submenu.js', array(), wp_get_theme()->get( 'Version' ), true );
+
+}
+
 // Enqueue editor styles to hide unwanted button styles
 add_action( 'enqueue_block_editor_assets', 'frost_editor_styles' );
 function frost_editor_styles() {
