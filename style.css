@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Version: 12.0.0
+Version: 12.0.4
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -396,6 +396,16 @@ iframe[src*="youtu.be"] {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+@media only screen and (min-width: 783px) {
+  .cf7-contactinfo {
+    flex-wrap: wrap;
+  }
+
+  .cf7-contactinfo p {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
 }
 
 .cf7-container p {

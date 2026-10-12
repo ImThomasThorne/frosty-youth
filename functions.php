@@ -267,8 +267,8 @@ function cya_login_logo() {
             background-position: center;
             background-repeat: no-repeat;
             width: 100%;
-            max-width: 320px;
-            height: 100px;
+            max-width: 480px;
+            height: 150px;
         }
     </style>
     <?php
