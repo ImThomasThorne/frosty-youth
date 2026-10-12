@@ -50,6 +50,15 @@ function frost_enqueue_mobile_submenu() {
 
 }
 
+// Enqueue script to widen the GiveWP donation form, which renders inside its
+// own same-origin iframe and so can't be reached by the theme's stylesheet.
+add_action( 'wp_enqueue_scripts', 'frost_enqueue_givewp_form_width' );
+function frost_enqueue_givewp_form_width() {
+
+	wp_enqueue_script( 'frost-givewp-form-width', get_template_directory_uri() . '/js/givewp-form-width.js', array(), wp_get_theme()->get( 'Version' ), true );
+
+}
+
 // Enqueue editor styles to hide unwanted button styles
 add_action( 'enqueue_block_editor_assets', 'frost_editor_styles' );
 function frost_editor_styles() {
@@ -245,4 +254,33 @@ add_filter( 'document_title_parts', function( $parts ) {
 		$parts['title'] = frosty_youth_clean_archive_title( $parts['title'] );
 	}
 	return $parts;
+} );
+
+// Replace the WordPress logo on the login screen
+function cya_login_logo() {
+    ?>
+    <style>
+        #login h1 a,
+        .login h1 a {
+            background-image: url('<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/login-logo.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            max-width: 320px;
+            height: 100px;
+        }
+    </style>
+    <?php
+}
+add_action( 'login_enqueue_scripts', 'cya_login_logo' );
+
+// Point the logo link at your own site instead of wordpress.org
+add_filter( 'login_headerurl', function() {
+    return home_url();
+} );
+
+// Change the logo's link text (used by screen readers)
+add_filter( 'login_headertext', function() {
+    return get_bloginfo( 'name' );
 } );

@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Version: 9.8.0
+Version: 12.0.0
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -24,6 +24,23 @@ Text Domain: frosty-youth
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--wp--preset--color--primary) #fff;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #bab8b8;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--wp--preset--color--primary);
+  border-radius: var(--wp--custom--border-radius--small);
+  border: 3px solid #bab8b8;
 }
 
 a,
@@ -235,6 +252,10 @@ iframe[src*="youtu.be"] {
   width: fit-content !important;
   display: flex !important;
   justify-content: flex-end !important;
+}
+
+.mobile-menu > .wp-block-buttons > .wp-block-button > a {
+  font-size: var(--wp--preset--font-size--x-large) !important;
 }
 
 /* -- Mobile Submenu Accordion -- */
@@ -912,6 +933,39 @@ h6 a {
   .cya-grid-responsive-4 {
     /* grid-template-columns: 1fr 1fr 1fr 1fr !important; */
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+/* These galleries are WordPress core's flexbox gallery block
+   (.wp-block-gallery.has-nested-images, display:flex), not a CSS grid, so
+   the column width is set via width on each child figure.wp-block-image -
+   grid-template-columns had no effect here. The calc() formulas match
+   core's own gallery column sizing (wp-includes/blocks/gallery/style.css),
+   just gated behind these custom breakpoints instead of core's fixed ones. */
+
+.cya-img-responsive-2 figure.wp-block-image:not(#individual-image),
+.cya-img-responsive-3 figure.wp-block-image:not(#individual-image),
+.cya-img-responsive-4 figure.wp-block-image:not(#individual-image) {
+  width: 100% !important;
+}
+
+@media only screen and (min-width: 1100px) {
+  .cya-img-responsive-2 figure.wp-block-image:not(#individual-image),
+  .cya-img-responsive-3 figure.wp-block-image:not(#individual-image),
+  .cya-img-responsive-4 figure.wp-block-image:not(#individual-image) {
+    width: calc(50% - var(--wp--style--unstable-gallery-gap, 16px) / 2) !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .cya-img-responsive-3 figure.wp-block-image:not(#individual-image) {
+    width: calc(33.33333% - var(--wp--style--unstable-gallery-gap, 16px) * 0.66667) !important;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .cya-img-responsive-4 figure.wp-block-image:not(#individual-image) {
+    width: calc(25% - var(--wp--style--unstable-gallery-gap, 16px) * 0.75) !important;
   }
 }
 
