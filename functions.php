@@ -192,53 +192,6 @@ $myUpdateChecker->setBranch('trunk');
 
 
 /**
- * Register ACF Blocks
- */
-add_action( 'acf/init', 'cya_register_acf_blocks' );
-function cya_register_acf_blocks() {
-	// Check if ACF Pro is active
-	if ( ! function_exists( 'acf_register_block_type' ) ) {
-		add_action( 'admin_notices', 'cya_acf_admin_notice' );
-		return;
-	}
-
-	// Register Homepage Slider Block
-	$block_template = get_template_directory() . '/blocks/homepage-slider/homepage-slider.php';
-
-	// Debug: Check if template file exists
-	if ( ! file_exists( $block_template ) ) {
-		error_log( 'ACF Block Template Not Found: ' . $block_template );
-	}
-
-	acf_register_block_type( array(
-		'name'              => 'homepage-slider',
-		'title'             => __( 'Homepage Slider', 'frosty-youth' ),
-		'description'       => __( 'A custom slider block for the homepage with multiple images, text overlay, and a button', 'frosty-youth' ),
-		'render_template'   => $block_template,
-		'category'          => 'cya-blocks',
-		'icon'              => 'images-alt2',
-		'keywords'          => array( 'slider', 'carousel', 'images', 'homepage' ),
-		'mode'              => 'preview',
-		'supports'          => array(
-			'align'  => array( 'wide', 'full' ),
-			'anchor' => true,
-		),
-		'enqueue_style'     => get_template_directory_uri() . '/style.css',
-	) );
-}
-
-/**
- * Admin notice if ACF Pro is not active
- */
-function cya_acf_admin_notice() {
-	?>
-	<div class="notice notice-error">
-		<p><?php _e( 'The Homepage Slider block requires Advanced Custom Fields PRO to be installed and activated.', 'frosty-youth' ); ?></p>
-	</div>
-	<?php
-}
-
-/**
  * Remove 'Archives:' and similar prefixes from event archive titles.
  * Covers the page heading, the browser <title> tag, and The Events Calendar's
  * own title output.
