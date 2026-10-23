@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Version: 12.1.0
+Version: 12.1.3
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -556,6 +556,10 @@ iframe[src*="youtu.be"] {
 
 #mc_embed_signup {
   font-family: var(--wp--preset--font-family--poppins);
+  background-color: transparent!important;
+  padding: 0rem;
+  margin: 0rem;
+  width: auto;
 }
 
 #mc_embed_signup .indicates-required {
@@ -566,11 +570,19 @@ iframe[src*="youtu.be"] {
 }
 
 #mc_embed_signup .mc-field-group .asterisk {
-  color: var(--wp--preset--color--secondary);
+  color: var(--wp--preset--color--contrast);
+}
+
+#mc_embed_signup_scroll {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem;
 }
 
 #mc_embed_signup div.mc-field-group {
-  margin-bottom: 1rem;
+  flex: 1 1 auto;
+  margin-bottom: 0;
 }
 
 #mc_embed_signup div.mc-field-group label {
@@ -578,6 +590,19 @@ iframe[src*="youtu.be"] {
   font-weight: var(--wp--custom--font-weight--medium);
   margin-bottom: 0.5rem;
   display: block;
+  color: var(--wp--preset--color--contrast);
+}
+
+/* The anti-spam honeypot and response messages sit as siblings of the
+   field-group and button in the markup - force them onto their own full
+   width row instead of squeezing into the input/button flex row. */
+#mc_embed_signup #mce-responses,
+#mc_embed_signup div[hidden] {
+  flex-basis: 100%;
+}
+
+#mc_embed_signup div.clear {
+  flex: 0 0 auto;
 }
 
 #mc_embed_signup div.mc-field-group input,
@@ -639,8 +664,8 @@ iframe[src*="youtu.be"] {
 
 /* Submit button */
 #mc_embed_signup input.button {
-  background-color: var(--wp--preset--color--primary) !important;
-  color: var(--wp--preset--color--base) !important;
+  background-color: var(--wp--preset--color--base) !important;
+  color: var(--wp--preset--color--primary) !important;
   border: none;
   border-radius: var(--wp--custom--border-radius--small) !important;
   padding: var(--wp--preset--spacing--10) var(--wp--preset--spacing--20) !important;
@@ -656,7 +681,7 @@ iframe[src*="youtu.be"] {
 
 #mc_embed_signup input.button:hover {
   transform: scale(1.05);
-  background-color: var(--wp--preset--color--primary) !important;
+  background-color: var(--wp--preset--color--base) !important;
 }
 
 /* Response messages (Ajax) */
