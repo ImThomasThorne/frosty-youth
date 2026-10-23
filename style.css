@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Version: 12.1.3
+Version: 12.1.5
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -570,7 +570,7 @@ iframe[src*="youtu.be"] {
 }
 
 #mc_embed_signup .mc-field-group .asterisk {
-  color: var(--wp--preset--color--contrast);
+  color: var(--wp--preset--color--base);
 }
 
 #mc_embed_signup_scroll {
@@ -590,7 +590,7 @@ iframe[src*="youtu.be"] {
   font-weight: var(--wp--custom--font-weight--medium);
   margin-bottom: 0.5rem;
   display: block;
-  color: var(--wp--preset--color--contrast);
+  color: var(--wp--preset--color--base);
 }
 
 /* The anti-spam honeypot and response messages sit as siblings of the
