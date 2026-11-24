@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Version: 12.1.8
+Version: 12.2.0
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -155,7 +155,7 @@ input[type="button"] {
 .wp-block-search__button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .wp-block-read-more {
@@ -481,7 +481,7 @@ iframe[src*="youtu.be"] {
 }
 
 .wpcf7 input[type="submit"]:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   background-color: var(--wp--preset--color--primary) !important;
 }
 
@@ -540,7 +540,7 @@ iframe[src*="youtu.be"] {
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: repeat(6, auto);
-  column-gap: 2rem;
+  column-gap: 4rem;
   row-gap: 0;
   justify-items: start;
 }
@@ -690,7 +690,7 @@ iframe[src*="youtu.be"] {
 }
 
 #mc_embed_signup input.button:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   background-color: var(--wp--preset--color--base) !important;
 }
 
@@ -827,7 +827,7 @@ h6 a {
 
 .wp-block-search__button:hover {
   padding: 16px 20px;
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .wp-block-search__inside-wrapper {
@@ -881,7 +881,7 @@ h6 a {
 }
 
 .search-overlay-close:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .search-overlay .wp-block-search {
