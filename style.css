@@ -7,7 +7,7 @@ Author URI: https://cya.org.uk
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Version: 12.2.0
+Version: 12.3.2
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: frosty-youth
@@ -535,8 +535,9 @@ iframe[src*="youtu.be"] {
   color: var(--wp--preset--color--base);
 }
 
-/* Quick Links: 6 items per column, then wrap to a new column */
-.footer-nav.is-vertical .wp-block-navigation__container {
+/* Quick Links: 6 items per column, then wrap to a new column.
+   .nav-quick-links is added automatically in functions.php */
+.wp-block-navigation.nav-quick-links .wp-block-navigation__container {
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: repeat(6, auto);
@@ -810,7 +811,8 @@ h6 a {
 
 /* Search */
 
-/* Hide search input in header navigation, show only button */
+/* Hide search input in the header, show only button */
+.header-search .wp-block-search__input,
 .wp-block-navigation .wp-block-search__input {
   display: none !important;
 }
@@ -888,7 +890,11 @@ h6 a {
   margin: 0;
 }
 
-.search-overlay .wp-block-search__input {
+/* Always show the text box in the overlay, even though it's hidden in the header */
+.search-overlay .wp-block-search .wp-block-search__input {
+  display: block !important;
+  flex: 1 1 auto;
+  min-width: 0;
   background-color: var(--wp--preset--color--base) !important;
   border: 1px solid var(--wp--preset--color--contrast) !important;
   border-radius: var(--wp--custom--border-radius--small) !important;

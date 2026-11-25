@@ -237,3 +237,139 @@ add_filter( 'login_headerurl', function() {
 add_filter( 'login_headertext', function() {
     return get_bloginfo( 'name' );
 } );
+/* ------------------------------------------------------------------
+ * Classic menus (Appearance → Menus)
+ *
+ * Lets the menus be edited under Appearance → Menus while keeping the
+ * Navigation blocks (and their styling and mobile overlay) in the
+ * header and footer. Each Navigation block below takes its links from
+ * the menu assigned to its location. If no menu is assigned, the block
+ * shows its own links as before.
+ * ------------------------------------------------------------------ */
+
+// Menu locations shown under Appearance → Menus → Manage Locations.
+add_action( 'after_setup_theme', 'cya_register_menus' );
+function cya_register_menus() {
+	register_nav_menus( array(
+		'main-menu'   => __( 'Main Menu', 'frosty-youth' ),
+		'quick-links' => __( 'Quick Links', 'frosty-youth' ),
+		'footer-menu' => __( 'Footer', 'frosty-youth' ),
+	) );
+}
+
+// Which Navigation block uses which location, matched by the block's
+// navigation menu ID ("ref" in the header/footer templates).
+function cya_nav_block_locations() {
+	return array(
+		2476 => 'main-menu',   // Header (desktop and mobile)
+		4189 => 'quick-links', // Footer Quick Links column
+		2642 => 'footer-menu', // Footer bottom bar
+	);
+}
+
+add_filter( 'render_block_data', 'cya_nav_block_use_classic_menu' );
+function cya_nav_block_use_classic_menu( $block ) {
+	if ( 'core/navigation' !== $block['blockName'] || empty( $block['attrs']['ref'] ) ) {
+		return $block;
+	}
+
+	$locations = cya_nav_block_locations();
+	$ref       = (int) $block['attrs']['ref'];
+	if ( ! isset( $locations[ $ref ] ) ) {
+		return $block;
+	}
+	$location = $locations[ $ref ];
+
+	// Always add a class so each menu can be styled on its own,
+	// e.g. .nav-quick-links, .nav-footer-menu, .nav-main-menu.
+	$class = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] . ' ' : '';
+	$block['attrs']['className'] = $class . 'nav-' . $location;
+
+	// Stop here if no menu (or an empty one) is assigned to this location.
+	$assigned = get_nav_menu_locations();
+	if ( empty( $assigned[ $location ] ) ) {
+		return $block;
+	}
+	$menu_items = wp_get_nav_menu_items( $assigned[ $location ], array( 'update_post_term_cache' => false ) );
+	if ( empty( $menu_items ) ) {
+		return $block;
+	}
+
+	$link_blocks = cya_menu_items_to_blocks( $menu_items );
+
+	// Keep anything in the Navigation block that isn't a link (e.g. a
+	// button) and put the classic menu's links where the links were.
+	$nav_post    = get_post( $ref );
+	$inner       = ( $nav_post && 'wp_navigation' === $nav_post->post_type ) ? parse_blocks( $nav_post->post_content ) : array();
+	$link_types  = array( 'core/navigation-link', 'core/navigation-submenu', 'core/page-list', 'core/home-link' );
+	$new_inner   = array();
+	$links_added = false;
+	foreach ( $inner as $inner_block ) {
+		if ( empty( $inner_block['blockName'] ) ) {
+			continue; // Skip blank space between blocks.
+		}
+		if ( in_array( $inner_block['blockName'], $link_types, true ) ) {
+			if ( ! $links_added ) {
+				$new_inner   = array_merge( $new_inner, $link_blocks );
+				$links_added = true;
+			}
+			continue;
+		}
+		$new_inner[] = $inner_block;
+	}
+	if ( ! $links_added ) {
+		$new_inner = array_merge( $link_blocks, $new_inner );
+	}
+
+	// Render these blocks instead of the saved Navigation menu.
+	unset( $block['attrs']['ref'] );
+	$block['innerBlocks']  = $new_inner;
+	$block['innerContent'] = array();
+
+	return $block;
+}
+
+// Turn classic menu items into Navigation link / submenu blocks.
+function cya_menu_items_to_blocks( $menu_items, $parent_id = 0 ) {
+	$blocks = array();
+
+	foreach ( $menu_items as $item ) {
+		if ( (int) $item->menu_item_parent !== (int) $parent_id ) {
+			continue;
+		}
+
+		$children = cya_menu_items_to_blocks( $menu_items, $item->ID );
+		$classes  = array_filter( (array) $item->classes );
+
+		// Dropdowns need this class for the mobile accordion
+		// (js/mobile-submenu.js and the .mobile-submenu styles).
+		if ( $children ) {
+			$classes[] = 'mobile-submenu';
+		}
+
+		$attrs = array(
+			'label'         => $item->title,
+			'url'           => $item->url,
+			'id'            => (int) $item->object_id,
+			'kind'          => str_replace( '_', '-', $item->type ),
+			'type'          => $item->object,
+			'opensInNewTab' => '_blank' === $item->target,
+			'rel'           => $item->xfn,
+			'title'         => $item->attr_title,
+			'description'   => $item->description,
+		);
+		if ( $classes ) {
+			$attrs['className'] = implode( ' ', $classes );
+		}
+
+		$blocks[] = array(
+			'blockName'    => $children ? 'core/navigation-submenu' : 'core/navigation-link',
+			'attrs'        => $attrs,
+			'innerBlocks'  => $children,
+			'innerHTML'    => '',
+			'innerContent' => array(),
+		);
+	}
+
+	return $blocks;
+}

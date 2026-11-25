@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Find all search forms in the header (both desktop and mobile)
-  const searchForms = document.querySelectorAll('.wp-block-navigation .wp-block-search');
+  // Search blocks that open the overlay: any Search block with the
+  // 'header-search' class, or any Search block inside a nav block
+  const searchSelector = '.wp-block-search.header-search, .header-search .wp-block-search, .wp-block-navigation .wp-block-search';
+  const searchForms = document.querySelectorAll(searchSelector);
 
   // Find any custom search trigger buttons (add class 'search-trigger' to any element in WordPress)
   const customTriggers = document.querySelectorAll('.search-trigger');
@@ -24,6 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
   let searchClone;
   if (searchForms.length > 0) {
     searchClone = searchForms[0].cloneNode(true);
+    // Drop classes that hide the text box in the header so it shows in the overlay
+    searchClone.classList.remove('header-search', 'wp-block-search__button-only', 'wp-block-search__searchfield-hidden');
+    searchClone.removeAttribute('data-wp-interactive');
+    searchClone.removeAttribute('data-wp-context');
     const clonedInput = searchClone.querySelector('.wp-block-search__input');
     if (clonedInput) {
       clonedInput.style.display = 'block';
@@ -62,13 +68,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Attach click handlers to nav search buttons
-  searchForms.forEach(function(searchForm) {
-    const searchButton = searchForm.querySelector('.wp-block-search__button');
-    if (searchButton) {
-      searchButton.addEventListener('click', openOverlay);
-    }
-  });
+  // Catch clicks on header search buttons before WordPress's own
+  // "expand search" handler runs (capture phase), and open the overlay instead
+  document.addEventListener('click', function(e) {
+    const button = e.target.closest('.wp-block-search__button');
+    if (!button || overlay.contains(button)) return;
+    if (!button.closest(searchSelector)) return;
+    e.stopPropagation();
+    openOverlay(e);
+  }, true);
 
   // Attach click handlers to any custom .search-trigger elements
   customTriggers.forEach(function(trigger) {
